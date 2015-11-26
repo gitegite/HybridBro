@@ -1,5 +1,31 @@
 angular.module('starter.services', [])
+.factory('Restaurants', function(){
+  var restuarants = [{
+    id: 0,
+    name: 'Suck Burger',
+    description:'This shop sucks',
+    avartar:''
+  },{
+    id: 1,
+    name: 'Good Burger',
+    description:'This shop is good',
+    avartar:''
+  }];
+  return{
+    all:function(){
+      return restuarants;
+    },
+    get: function(restaurantId) {
+      for (var i = 0; i < chats.length; i++) {
+        if (restuarants[i].id === parseInt(restaurantId)) {
+          return restuarants[i];
+        }
+      }
+      return null;
+    }
 
+  };
+})
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
