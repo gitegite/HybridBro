@@ -1,7 +1,13 @@
 angular.module('starter.controllers', [])
 .controller('RestaurantsCtrl', function($scope, Restaurants){
-  $scope.restuarants = Restaurants.all();
+  $scope.restaurants = Restaurants.all();
+
 })
+
+.controller('ReservationCtrl',function($scope,$stateParams, Restaurants){
+  $scope.reservation = Restaurants.get($stateParams.restaurantId);
+})
+
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {

@@ -77,6 +77,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+
+  .state('tab.reservation',{
+    url:'/restaurants/{restaurantId}',
+    views:{
+      'tab-restaurants':{
+        templateUrl:'templates/res-reservation.html',
+        controller:'ReservationCtrl'
+      }
+    }
+
+  })
+
   .state('tab.account', {
     url: '/account',
     views: {

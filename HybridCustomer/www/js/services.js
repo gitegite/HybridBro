@@ -1,6 +1,7 @@
 angular.module('starter.services', [])
+
 .factory('Restaurants', function(){
-  var restuarants = [{
+  var restaurants = [{
     id: 0,
     name: 'Suck Burger',
     description:'This shop sucks',
@@ -13,12 +14,12 @@ angular.module('starter.services', [])
   }];
   return{
     all:function(){
-      return restuarants;
+      return restaurants;
     },
     get: function(restaurantId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (restuarants[i].id === parseInt(restaurantId)) {
-          return restuarants[i];
+      for (var i = 0; i < restaurants.length; i++) {
+        if (restaurants[i].id === parseInt(restaurantId)) {
+          return restaurants[i];
         }
       }
       return null;

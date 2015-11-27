@@ -1,11 +1,12 @@
-<ion-view view-title="Restaurantsssss">
+<ion-view view-title="Restaurants">
   <ion-content>
-    <div>sadsdasdsa</div>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="restaurant in restaurants" type="item-text-wrap" href="#/tab/restaurants/{{restuarant.id}}">
+      <ion-item  ng-repeat="restaurant in restaurants"  href="#/tab/restaurants/{{restaurant.id}}">
+
         <img ng-src="{{restaurant.avatar}}">
         <h2>{{restaurant.name}}</h2>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+        <p>{{restaurant.description}}</p>
+        
       </ion-item>
     </ion-list>
   </ion-content>
