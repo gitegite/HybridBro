@@ -8,6 +8,21 @@ angular.module('starter.controllers', [])
   $scope.reservation = Restaurants.get($stateParams.restaurantId);
 })
 
+.controller('LoginCtrl',function($scope, LoginService, $ionicPopup,$state){
+  $scope.data ={};
+  $scope.login = function(){
+    LoginService.loginUser($scope.data.username,$scope.data.password).success(function(data){
+      $state.go('tab.dash');
+    }).error(function(data){
+      var alertPopup = $ionicPopup.alert({
+        title:'FAIL!',
+        template:'Please check your credentials'
+      });
+    });
+  }
+
+})
+
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
