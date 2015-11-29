@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers','ui.router', 'starter.services','firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -59,7 +59,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-    .state('tab.chat-detail', {
+  .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
         'tab-chats': {
@@ -79,7 +79,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   .state('tab.reservation',{
-    url:'/restaurants/{restaurantId}',
+    url:'/restaurants/{resname}',
     views:{
       'tab-restaurants':{
         templateUrl:'templates/res-reservation.html',
@@ -88,13 +88,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
 
   })
+  .state('tab.history',{
+    url:'/history',
+    views:{
+      'tab-history':{
+        templateUrl:'templates/tab-history.html',
+        controller:'HistoryCtrl'
+      }
+    }
+  })
 
   .state('login', {
           url: '/login',
+          templateUrl: 'templates/tab-login.html',
+          controller: 'LoginCtrl'
+  })
 
-              templateUrl: 'templates/tab-login.html',
-              controller: 'LoginCtrl'
-          
+  .state('signup',{
+    url:'/signup',
+    templateUrl:'templates/tab-signup.html',
+    controller:'SignupCtrl'
   })
 
   .state('tab.account', {

@@ -1,0 +1,16 @@
+<ion-view view-title="Sign Up">
+    <ion-content class="padding">
+        <div class="list card padding">
+            <label class="item item-input">
+                <input type="text" placeholder="Username" ng-model="data.username">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Public Name" ng-model="data.publicname">
+            </label>
+            <label class="item item-input">
+                <input type="password" placeholder="Password" ng-model="data.password">
+            </label>
+        </div>
+        <button class="button button-block button-calm" ng-click="signUp(data.username,data.publicname,data.password)">Sign Up</button>
+    </ion-content>
+</ion-view>

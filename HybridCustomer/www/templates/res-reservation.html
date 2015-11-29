@@ -1,6 +1,17 @@
-<ion-view view-title="{{reservation.name}}">
+<ion-view view-title="{{reservation}}">
   <ion-content class="padding">
 
-    <h3>{{reservation.name}}</h3>
+    <h3>{{reservation}}</h3>
+
+  <ion-item ng-repeat='seat in seats'>
+    <div class='row'>
+      <div class='col col-90' style="padding-top:20px">
+        <h2>{{seat.Seat}} Seats Table</h2>
+      </div>
+    <div class='col'>
+      <button class='button button-medium button-balanced ion-plus-round' ng-click='addtofirebase(reservation,seat.TableID,seat.Seat)'></button>
+    </div>
+    </div>
+  </ion-item>
   </ion-content>
 </ion-view>
