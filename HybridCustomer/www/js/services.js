@@ -7,7 +7,7 @@ angular.module('starter.services', ['firebase'])
     }
   }
 })
-.factory('HistoryService',function(){
+.factory('HistoryService',function($firebaseArray){
   var histories = [];
   var Userref = new Firebase("https://crackling-inferno-7333.firebaseio.com/Users/" + window.sessionStorage.Key + "/Reservation");
   Userref.once('value',function(snapshot){
@@ -19,6 +19,10 @@ angular.module('starter.services', ['firebase'])
   return{
     all:function(){
       return histories;
+    },
+    allB:function(){
+      var hisB = new Firebase("https://crackling-inferno-7333.firebaseio.com/Users/" + window.sessionStorage.Key + "/Reservation");
+      return $firebaseArray(hisB);
     }
   }
 })
@@ -89,7 +93,7 @@ angular.module('starter.services', ['firebase'])
                         console.log("key2 ja "+window.sessionStorage.Key);
                         check = true;
                       //  $location.path('/restaurants');
-                        $state.go('tab.dash');
+                        $state.go('tab.restaurants');
                     }
                 });
                 if (check == false) {
@@ -141,8 +145,13 @@ angular.module('starter.services', ['firebase'])
   var seats = [];
   return{
     allFire:function(){
+
       return resfire;
+    },allFireB:function(){
+       var Ref = new Firebase('https://crackling-inferno-7333.firebaseio.com/Restaurant/');
+       return $firebaseArray(Ref);
     },
+
     getFire:function(resname){
       for(var i = 0; i < resfire.length;++i){
         if(resname === resfire[i]){

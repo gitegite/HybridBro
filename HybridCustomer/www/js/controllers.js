@@ -2,27 +2,28 @@ angular.module('starter.controllers', ['firebase'])
 .controller('RestaurantsCtrl', function($scope, Restaurants,$firebaseArray){
   $scope.resfire = Restaurants.allFire();
   console.log($scope.resfire);
-  if($scope.resfire === null){
-    location.reload();
-  }
+
 
 })
 .controller('HistoryCtrl',function($scope,HistoryService){
-  $scope.histories = HistoryService.all();
+  $scope.histories = HistoryService.allB();
 })
-.controller('ReservationCtrl',function($scope,$stateParams, Restaurants){
+.controller('ReservationCtrl',function($scope,$stateParams, Restaurants,$ionicPopup){
   $scope.reservation = Restaurants.getFire($stateParams.resname);
   $scope.seats = Restaurants.getSeat($stateParams.resname);
-  $scope.addtofirebase = function(resName,tableId,seatType){
-    console.log(resName);
+  $scope.addtofirebase = function(resName,tableId,seatType,time){
     var userName = window.sessionStorage.Username;
     var ref = new Firebase("https://crackling-inferno-7333.firebaseio.com/Restaurant/" + resName + "/Reservation");
     var Userref = new Firebase("https://crackling-inferno-7333.firebaseio.com/Users/" + window.sessionStorage.Key + "/Reservation");
+    var alertPopup = $ionicPopup.alert({
+        title: 'Reserved',
+        template: 'Please check your reservation history.'
+    });
     var data = {
       Name: userName,
       Seat: seatType,
       TableID: tableId,
-      Time:"12:55"
+      Time:time
     }
     console.log(data);
     ref.push(data);
@@ -31,7 +32,7 @@ angular.module('starter.controllers', ['firebase'])
       Name: userName,
       Seat: seatType,
       TableID: tableId,
-      Time:"12:55"
+      Time:time
     }
     Userref.push(data);
 

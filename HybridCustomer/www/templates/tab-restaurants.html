@@ -1,9 +1,12 @@
 <ion-view view-title="Restaurants">
   <ion-content>
+    <div class="list card padding">
+
     <ion-list>
       <ion-item ng-repeat="restaurant in resfire" href="#/tab/restaurants/{{restaurant}}">
-        <h2>{{restaurant}}</h2>
+        <h1 style="font-size:25px">{{restaurant}}</h1>
       </ion-item>
     </ion-list>
+  </div>
   </ion-content>
 </ion-view>
